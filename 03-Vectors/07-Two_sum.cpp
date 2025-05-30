@@ -8,33 +8,22 @@ class Solution
     public:
         vector<int> twoSum(vector<int>& nums, int target) 
         {
-            sort(nums.begin(), nums.end());
+            sort( nums.begin() , nums.end() );
+            int start = 0, end = nums.size() - 1;
             vector<int> vec;
-            int start = 0;
-            int end = nums.size() - 1;
-            
 
-            while( start < end)
+            for( int i=0; i<nums.size(); i++ )
             {
                 int ans = nums[start] + nums[end];
-                if( ans == target )
+
+                if( ans == target)
                 {
                     vec.push_back(start);
                     vec.push_back(end);
-                    return vec;
                 }
-                else if ( ans > target)
-                {
-                    end --;
-                }
-                else if( ans < target )
-                {
-                    start ++;
-                }
-                
-            }
+                else if( ans > )
 
-            return vec;
+            } 
         }
 };
 
