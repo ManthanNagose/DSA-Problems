@@ -1,42 +1,36 @@
 #include<iostream>
+#include<limits.h>
 using namespace std;
 
 class Solution 
 {
-public:
-    int divide(int dividend, int divisor) 
-    {
-        int count = 0, sum = 0, negDiv = 0, posDiv = 0;
-        while ( sum < dividend)
+    public:
+        int divide(int dividend, int divisor)
         {
-            if( divisor < 0)
-            {
-                divisor *= - 1;
-                sum += divisor;
-                cout << "Sum is : " << sum << endl;
-                if( sum >= dividend) break;
-                -- count;
-                negDiv ++;
-                cout << "Count is : " << count << endl;
-            }
-            else
-            {
-                sum += divisor;
-                cout << "Sum is : " << sum << endl;
-                if( sum >= dividend) break;
-                ++ count;
-                posDiv ++;
-                cout << "Count is : " << count << endl;
-            }
-        }
+            int sign = 1;
+            long long sum = 0, count = 0;
+            if( dividend < 0  || divisor < 0) sign = -1;
+            if( dividend < 0  && divisor < 0) sign = 1;
+            if( dividend < 0) dividend = 1ll*dividend*-1;
+            if( divisor < 0) divisor *= 1ll*divisor*-1;
 
-        if( negDiv > posDiv)
-        {
-            count = -abs(count);
+            while ( sum < dividend)
+            {
+                sum += divisor; 
+                if( sum > dividend) break; 
+                count ++; 
+            }
+
+            if( sign < 0) count  =  -abs(count);
+
+            if( count > INT_MAX) return INT_MAX;
+            if( count < INT_MIN) return INT_MIN;
+            
+            return count ;
         }
-        return count;
-    }
 };
+
+
 int main()
 {
     Solution s;
