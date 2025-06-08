@@ -24,3 +24,7 @@ public:
         return msum/k; 
     }
 };
+int main()
+{
+    
+}
