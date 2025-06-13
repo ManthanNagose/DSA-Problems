@@ -2,28 +2,29 @@
 #include<vector>
 #include<deque>
 using namespace std;
-class Solution
+
+class Solution 
 {
-public:
-    vector<int> getFirstNegativeOfAllSubarray(vector<int> nums, int k)
+    public:
+    vector<int> firstEvenOfSubarray(vector<int> nums, int k)
     {
-        int start = 0, end = 0;
+        int start = 0, end=0;
         deque<int> dq;
         vector<int> res;
-
-        while (end < nums.size())
+        while(end < nums.size())
         {
-            if (nums[end] < 0)
+            if(nums[end] % 2 == 0) 
+            {
                 dq.push_back(end);
+            }
 
-            if (end - start + 1 < k)
+            if( end-start+1 < k)
             {
                 end++;
             }
-            else if (end - start + 1 == k)
+            else if(end-start+1 == k)
             {
-                // push negative number or 0
-                if (!dq.empty())
+                if(!dq.empty())
                 {
                     res.push_back(nums[dq.front()]);
                 }
@@ -32,18 +33,16 @@ public:
                     res.push_back(0);
                 }
 
-                // Remove out of window
-                if (!dq.empty() && dq.front() == start)
+                if( !dq.empty() && dq.front() == start)
+                {
                     dq.pop_front();
-
-                start++;
-                end++;
+                }
+                start ++, end++;
             }
         }
         return res;
     }
 };
-
 int main()
 {
     Solution s;
@@ -65,7 +64,7 @@ int main()
     cin >> k;
 
     cout << "Answer is : " ;
-    vector<int> result = s.getFirstNegativeOfAllSubarray(vec,k);
+    vector<int> result = s.firstEvenOfSubarray(vec,k);
     for(int i=0; i<result.size(); i++)
     {
         cout << result[i] << " ";

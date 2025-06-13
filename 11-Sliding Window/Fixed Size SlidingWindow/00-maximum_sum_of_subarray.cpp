@@ -17,17 +17,10 @@ class Solution
             }
             else if(j-i+1 == k)
             {
-                cout << "i before = " << i << endl;
-                cout << "j before  = " << j << endl;
-                cout << "Sum before : " << sum << endl;
                 maxi = max(maxi, sum);
                 sum -= nums[i];
-                cout << "Sum after : " << sum << endl;
                 i++;
                 j++;
-                cout << "i after = " << i << endl;
-                cout << "j after  = " << j << endl;
-                cout << "Maxi is : " << maxi << endl << endl;
             }
         }
         float ans = maxi*1.0 / k;
