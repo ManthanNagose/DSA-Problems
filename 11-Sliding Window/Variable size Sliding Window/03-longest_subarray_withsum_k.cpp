@@ -7,7 +7,7 @@ class Solution
     public:
     int longestSubarrayWithSum(vector<int> nums, int targetSum)
     {
-        int start = 0, maxlen = 0, end = 0;
+        int start = 0, maxlen = 0;
         int sum = 0;
         for(int end = 0; end < nums.size(); end++)
         {
